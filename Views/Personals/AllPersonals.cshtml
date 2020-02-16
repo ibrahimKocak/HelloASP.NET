@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "AllPersonals";
+}
+
+<h2>All Personals</h2>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
+<input type="button" id="personalsShow" value="Show Personals"/>
+
+<div id="personals"></div>
+
+<script>
+    $(document).ready(function () {
+        $("#personalsShow").click(function () {
+            $.getJSON('../api/personal').done(function (data) {
+                var personals = "";
+                $.each(data, function (key, personal) {
+                    personals += personal.Name + " " + personal.Surname + "<br />";
+                });
+                $("#personals").html(personals);
+            })
+        });
+    })
+
+</script>
