@@ -21,5 +21,26 @@ namespace HelloASP.NET.Controllers
         {
             return personals;
         }
+
+        public IHttpActionResult GetPersonal(int id)
+        {
+            var wantedPersonal = (from p in personals
+                                  where p.Id == id
+                                  select p).FirstOrDefault();
+            return Ok(wantedPersonal);
+        }
+
+        public IHttpActionResult PostPersonal(Personal personal)
+        {
+            if(personals.Where(p=>p.Id==personal.Id).Count()==0)
+            {
+                return Ok();
+            }
+            else
+            {
+                return Conflict();
+            }
+        }
+
     }
 }

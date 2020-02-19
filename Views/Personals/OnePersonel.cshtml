@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "OnePersonel";
+}
+
+<h2>OnePersonel</h2>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+Personal Id <input type="text" id="personalId" />
+<input type="button" id="personalSearch" value="Personal Search"/>
+<div id="personal"></div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#personalSearch").click(function () {
+            var personalId = $("#personalId").val();
+
+            $.getJSON('../api/personal/' + personalId)
+                .done(function (data) {
+                    var personalInformation = data.Name + " " + data.Surname;
+                    $('#personal').html(personalInformation);
+                })
+        })
+    })
+
+</script>
