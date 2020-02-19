@@ -15,12 +15,9 @@ Personal Id <input type="text" id="personalId" />
 
     $(document).ready(function () {
         $("#personalSearch").click(function () {
-            var personalId = $("#personalId").val();
-
-            $.getJSON('../api/personal/' + personalId)
+            $.getJSON('../api/personal/' + $("#personalId").val())
                 .done(function (data) {
-                    var personalInformation = data.Name + " " + data.Surname;
-                    $('#personal').html(personalInformation);
+                    $('#personal').html(data.Name + " " + data.Surname);
                 })
         })
     })

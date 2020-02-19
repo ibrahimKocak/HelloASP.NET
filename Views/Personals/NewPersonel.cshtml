@@ -11,11 +11,7 @@
 
     $(document).ready(function () {
         $('#save').click(function () {
-            var perId = $("#Id").val();
-            var perName = $("#Name").val();
-            var perSurname = $("#Surname").val();
-
-            $.post('../api/personal', { Id: perId, Name: perName, Surname: perSurname }, function (result) {
+            $.post('../api/personal', { Id: $("#Id").val(), Name: $("#Name").val(), Surname: $("#Surname").val() }, function (result) {
                 alert("Personal Saved");
             })
         })
